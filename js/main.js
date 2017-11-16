@@ -5,9 +5,10 @@ const CANVAS_WIDTH = 800;
 var background_color;
 
 // paddle settings
-var player_Y;
 const PADDLE_HEIGHT = 80;
 const PADDLE_WIDTH = 20;
+var player_Y;
+var player_speed;
 
 // ball settings
 var ball_X;
@@ -19,11 +20,17 @@ var ball_speed_Y;
 const BALL_RADIUS = 20;
 
 function setup() {
+
+  // Set up canvas
   canvas = createCanvas(CANVAS_WIDTH,CANVAS_HEIGHT);
   canvas.parent('game-container');
   background_color = '#2dd5e3';
 
+  // Set up player paddle
   player_Y = (CANVAS_HEIGHT / 2) - (PADDLE_HEIGHT / 2);
+  player_speed = 5;
+
+  // Set up ball
   ball_X = CANVAS_WIDTH / 2;
   ball_Y = CANVAS_HEIGHT / 2;
   ball_direction_X = (Math.random() < 0.7) ? -1 : 1;
@@ -46,10 +53,10 @@ function draw_background() {
 
 function check_for_movement() {
   if (keyIsDown(UP_ARROW) || keyIsDown(87)) {
-    player_Y -= 5;
+    player_Y -= player_speed;
     player_Y = max(player_Y, 0);
   } else if (keyIsDown(DOWN_ARROW) || keyIsDown(83)) {
-    player_Y += 5;
+    player_Y += player_speed;
     player_Y = min(player_Y, CANVAS_HEIGHT - PADDLE_HEIGHT);
   }
 }
