@@ -82,6 +82,8 @@ function move_ball() {
     ball_speed_X *= -1;
   } else if (((ball_X - BALL_RADIUS) <= (player_X + PADDLE_WIDTH)) && (ball_Y >= player_Y && ball_Y <= (player_Y + PADDLE_HEIGHT))) {
     ball_speed_X *= -1;
+  } else if (((ball_X + BALL_RADIUS) >= enemy_X) && (ball_Y >= enemy_Y && ball_Y <= (enemy_Y + PADDLE_HEIGHT))) {
+    ball_speed_X *= -1;
   }
   ball_Y += ball_speed_Y;
   if (ball_Y - BALL_RADIUS < 0 || ball_Y + BALL_RADIUS > CANVAS_HEIGHT) {
