@@ -2,6 +2,7 @@
 var canvas;
 const CANVAS_HEIGHT = 640;
 const CANVAS_WIDTH = 800;
+var background_color;
 
 // paddle settings
 var player_Y;
@@ -20,7 +21,7 @@ const BALL_RADIUS = 20;
 function setup() {
   canvas = createCanvas(CANVAS_WIDTH,CANVAS_HEIGHT);
   canvas.parent('game-container');
-  background('#2dd5e3');
+  background_color = '#2dd5e3';
 
   player_Y = (CANVAS_HEIGHT / 2) - (PADDLE_HEIGHT / 2);
   ball_X = CANVAS_WIDTH / 2;
@@ -40,7 +41,7 @@ function draw() {
 }
 
 function draw_background() {
-  background('#2dd5e3');
+  background(background_color);
 }
 
 function check_for_movement() {
