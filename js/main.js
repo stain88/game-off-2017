@@ -1,12 +1,12 @@
 // canvas settings
 var canvas;
-var CANVAS_HEIGHT = 640;
-var CANVAS_WIDTH = 800;
+const CANVAS_HEIGHT = 640;
+const CANVAS_WIDTH = 800;
 
 // paddle settings
 var player_Y;
-var PADDLE_HEIGHT = 80;
-var PADDLE_WIDTH = 20;
+const PADDLE_HEIGHT = 80;
+const PADDLE_WIDTH = 20;
 
 // ball settings
 var ball_X;
@@ -15,7 +15,7 @@ var ball_direction_X;
 var ball_direction_Y;
 var ball_speed_X;
 var ball_speed_Y;
-var BALL_RADIUS = 20;
+const BALL_RADIUS = 20;
 
 function setup() {
   canvas = createCanvas(CANVAS_WIDTH,CANVAS_HEIGHT);
