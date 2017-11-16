@@ -9,15 +9,17 @@ const PADDLE_HEIGHT = 80;
 const PADDLE_WIDTH = 20;
 var player_Y;
 var player_speed;
+var enemy_Y;
+var enemy_speed;
 
 // ball settings
+const BALL_RADIUS = 20;
 var ball_X;
 var ball_Y;
 var ball_direction_X;
 var ball_direction_Y;
 var ball_speed_X;
 var ball_speed_Y;
-const BALL_RADIUS = 20;
 
 function setup() {
 
@@ -37,6 +39,10 @@ function setup() {
   ball_direction_Y = (Math.random() < 0.5) ? -1 : 1;
   ball_speed_X = ball_direction_X * Math.floor(Math.random() * 6 + 3);
   ball_speed_Y = ball_direction_Y * Math.floor(Math.random() * 4 + 2);
+
+  // Set up enemy paddle
+  enemy_Y = (CANVAS_HEIGHT / 2) - (PADDLE_HEIGHT / 2);
+  enemy_speed = 5;
 }
 
 function draw() {
@@ -45,6 +51,7 @@ function draw() {
   check_for_movement();
   draw_player_paddle();
   move_ball();
+  draw_enemy_paddle();
 }
 
 function draw_background() {
@@ -75,4 +82,8 @@ function move_ball() {
     ball_speed_Y *= -1;
   }
   ellipse(ball_X, ball_Y, BALL_RADIUS, BALL_RADIUS);
+}
+
+function draw_enemy_paddle() {
+  rect(CANVAS_WIDTH - PADDLE_WIDTH - 20, enemy_Y, PADDLE_WIDTH, PADDLE_HEIGHT);
 }
