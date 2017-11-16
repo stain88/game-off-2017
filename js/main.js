@@ -88,8 +88,10 @@ function draw_enemy_paddle() {
   var height_diff_with_ball = ball_Y - (enemy_Y + PADDLE_HEIGHT / 2);
   if (height_diff_with_ball >= 5) {
     enemy_Y += enemy_speed;
+    enemy_Y = min(enemy_Y, CANVAS_HEIGHT - PADDLE_HEIGHT);
   } else if (height_diff_with_ball <= -5) {
     enemy_Y -= enemy_speed;
+    enemy_Y = max(enemy_Y, 0);
   }
   rect(CANVAS_WIDTH - PADDLE_WIDTH - 20, enemy_Y, PADDLE_WIDTH, PADDLE_HEIGHT);
 }
