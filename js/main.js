@@ -15,7 +15,7 @@ var enemy_Y;
 var enemy_speed;
 
 // ball settings
-const BALL_RADIUS = 20;
+const BALL_RADIUS = 10;
 var ball_X;
 var ball_Y;
 var ball_direction_X;
@@ -80,12 +80,14 @@ function move_ball() {
   ball_X += ball_speed_X;
   if (ball_X - BALL_RADIUS < 0 || ball_X + BALL_RADIUS > CANVAS_WIDTH) {
     ball_speed_X *= -1;
+  } else if (((ball_X - BALL_RADIUS) <= (player_X + PADDLE_WIDTH)) && (ball_Y >= player_Y && ball_Y <= (player_Y + PADDLE_HEIGHT))) {
+    ball_speed_X *= -1;
   }
   ball_Y += ball_speed_Y;
   if (ball_Y - BALL_RADIUS < 0 || ball_Y + BALL_RADIUS > CANVAS_HEIGHT) {
     ball_speed_Y *= -1;
   }
-  ellipse(ball_X, ball_Y, BALL_RADIUS, BALL_RADIUS);
+  ellipse(ball_X, ball_Y, BALL_RADIUS * 2, BALL_RADIUS * 2);
 }
 
 function draw_enemy_paddle() {
